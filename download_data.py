@@ -90,10 +90,11 @@ def download_calib(basedir):
 if __name__ == '__main__':
 
     # data will be downloaded into ./data directory
-    basedir = 'data'
+    basedir = '/home/feberhardt/Dokumente/data'
     mkdir(basedir)
 
-    capture_dates = ['20171130T2000', '20171207T2024', '20171212T2030']
+    # capture_dates = ['20171130T2000', '20171207T2024', '20171212T2030']
+    capture_dates = ['20171207T2024']
     for capture_date in capture_dates:
         download_data(basedir, capture_date)
     download_calib(basedir)
