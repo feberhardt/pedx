@@ -2,13 +2,38 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-def get_gt_keypoints(keypoint_dict, pedx_keys):
+
+def get_keypoints(gt_anntotations, capture_date, camera_name, frame_id, pedx_keys):
+    """
+    return list of all keypoints in one frame
+    Args:
+        gt_anntotations:
+        capture_date:
+        camera_name:
+        frame_id:
+        pedx_keys:
+
+    Returns:
+
+    """
+    labels_img = gt_anntotations[str(capture_date)][str(camera_name)][str(frame_id)]
+    keypoints = []
+    for tracking_id in labels_img.keys():
+        keypoint_dict = labels_img[tracking_id]['keypoint']
+        if keypoint_dict is not None:
+            keypoints.append(keypoints_from_dict(keypoint_dict, pedx_keys))
+
+    return keypoints
+
+
+def keypoints_from_dict(keypoint_dict, pedx_keys):
     """
     transform pedx gt keypoints from dict to a numpy array
     :param keypoint_dict: dict
     :param pedx_keys: list of strings with all keys like 'reye'
     :return:
     """
+    print(len(pedx_keys))
     keypoints = np.empty((len(pedx_keys), 3))
     coco_list = []
     for i, key in enumerate(pedx_keys):
@@ -78,6 +103,7 @@ def joints_dict():
         },
     }
     return joints
+
 
 def draw_skeleton(image, points, skeleton, color_palette='Set2', palette_samples=8, person_index=0,
                   confidence_threshold=0.5):
