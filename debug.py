@@ -108,6 +108,4 @@ cv2.imwrite(f'Annotations_test{frame_id}.jpg', image)
 
 # keys = 'category', 'polygon', 'camera_name', 'capture_date', 'frame_id', 'keypoint', 'tracking_id'
 
-# dl.load_a_pointcloud()
-## _3d + '20171207T2024_0000055_14e122a6ca5f4c889fa3d76d2549e18a.ply') as f3:
-#   labels_3d = json.load(f3)
+

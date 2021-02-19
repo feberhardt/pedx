@@ -22,5 +22,5 @@ def read_ply(fn):
     z = plydata['vertex']['z']
     pts = np.array([x,y,z]).T
     return np.array([x,y,z]).T # (nv,3)
-    return pts
+
 
